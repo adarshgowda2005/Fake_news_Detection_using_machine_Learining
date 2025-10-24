@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News AI - Fake News Detector</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-shield-check"></i>
+                <h1>Fake News Detection</h1>
+            </div>
+            <p class="tagline">Advanced AI-powered news authenticity verification</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="url-tab">Analyze URL</button>
+                    <button class="tab-btn" data-tab="text-tab">Paste Text</button>
+                </div>
+
+                <!-- URL Input -->
+                <div id="url-tab" class="tab-content active">
+                    <div class="input-group">
+                        <input type="url" id="news-url" placeholder="https://example.com/news-article" class="url-input">
+                        <button id="analyze-url" class="analyze-btn">
+                            <i class="fas fa-search"></i>
+                            Analyze URL
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Text Input -->
+                <div id="text-tab" class="tab-content">
+                    <div class="input-group">
+                        <textarea id="news-text" placeholder="Paste news article text here..." class="text-input" rows="6"></textarea>
+                        <button id="analyze-text" class="analyze-btn">
+                            <i class="fas fa-analytics"></i>
+                            Analyze Text
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" class="results-section hidden">
+                <div class="result-card">
+                    <div id="verdict-icon" class="verdict-icon">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                    <h2 id="verdict-text" class="verdict-text">Analysis Result</h2>
+                    <div id="confidence-meter" class="confidence-meter">
+                        <div class="confidence-fill"></div>
+                    </div>
+                    <div id="confidence-text" class="confidence-text">Confidence: 0%</div>
+                    
+                    <div id="article-info" class="article-info hidden">
+                        <h3><i class="fas fa-newspaper"></i> Article Details</h3>
+                        <p id="article-title" class="article-title"></p>
+                        <a id="article-link" href="#" target="_blank" class="article-link">
+                            <i class="fas fa-external-link-alt"></i> View Original
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loading-section" class="loading-section hidden">
+                <div class="spinner"></div>
+                <p>Analyzing content with AI verification...</p>
+            </div>
+
+            <!-- Error Section -->
+            <div id="error-section" class="error-section hidden">
+                <div class="error-card">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Analysis Failed</h3>
+                    <p id="error-message"></p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 NewsVeracity AI. Advanced content verification technology.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
